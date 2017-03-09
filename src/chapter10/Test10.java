@@ -61,6 +61,34 @@ public class Test10 {
         System.out.println("在队头出队:  " + Arrays.toString(exercise1015.doublequeue));
         exercise1015.endEnqueue(90);
         System.out.println(Arrays.toString(exercise1015.doublequeue));
+
         boundary("Exercise1015 End");
+        boundary("Exercise1016 Start");
+
+        Exercise1016 exercise1016 = new Exercise1016();
+       for (int i = 0;i < 4; i++) {
+           exercise1016.enqueue(i);
+       }
+       for (int i = 0;i < 4; i++) {
+           System.out.println(exercise1016.dequeue());
+        }
+        exercise1016.enqueue(3);
+        System.out.println(exercise1016.dequeue());
+        // exercise1016.dequeue();
+
+        boundary("Exercise1016 End");
+        boundary("Exercise1017 Start");
+
+        Exercise1017 exercise1017 = new Exercise1017();
+        for (int i = 01;i < 5; i++) {
+            exercise1017.push(i);
+        }
+        for (int i = 0;i < 4; i++) {
+            System.out.println(exercise1017.pop());
+        }
+        //exercise1017.push(3);
+        //System.out.println(exercise1017.pop());
+
+        boundary("Exercise1017 End");
     }
 }
