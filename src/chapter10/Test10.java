@@ -14,9 +14,7 @@ public class Test10 {
      * @param string
      */
     public static void boundary(String string) {
-        System.out.println();
         System.out.println("**********  " + string + "  *********");
-        System.out.println();
     }
 
     public static void main(String[] args) {
@@ -37,7 +35,6 @@ public class Test10 {
         }
         // stack1.pop();
         System.out.println(Arrays.toString(exercise1012.array));
-        boundary("Exercise1012 End");
 
         boundary("Exercise1014 Start");
         Exercise1014 exercise1014 = new Exercise1014(5);
@@ -51,7 +48,6 @@ public class Test10 {
         System.out.println(Arrays.toString(exercise1014.array));
 
         boundary("Exercise1014 End");
-        boundary("Exercise1015 End");
         Exercise1015 exercise1015 = new Exercise1015(5);
         for (int i = 0; i < 4; i++) {
             exercise1015.frontEnqueue(i + 1);
@@ -62,7 +58,6 @@ public class Test10 {
         exercise1015.endEnqueue(90);
         System.out.println(Arrays.toString(exercise1015.doublequeue));
 
-        boundary("Exercise1015 End");
         boundary("Exercise1016 Start");
 
         Exercise1016 exercise1016 = new Exercise1016();
@@ -76,7 +71,6 @@ public class Test10 {
         System.out.println(exercise1016.dequeue());
         // exercise1016.dequeue();
 
-        boundary("Exercise1016 End");
         boundary("Exercise1017 Start");
 
         Exercise1017 exercise1017 = new Exercise1017();
@@ -89,6 +83,53 @@ public class Test10 {
         //exercise1017.push(3);
         //System.out.println(exercise1017.pop());
 
-        boundary("Exercise1017 End");
+        boundary("Exercise1021 Start");
+
+        Exercise1021 exercise1021 = new Exercise1021();
+        for (int i = 0;i < 5; i++) {
+            exercise1021.insert(new ListNode(i));
+        }
+        System.out.println(exercise1021.delete(4).key);
+        System.out.println(exercise1021.delete(0).key);
+        System.out.println(exercise1021.delete(2).key);
+        System.out.println(exercise1021.delete(1).key);
+        // System.out.println(exercise1021.delete(8).key);
+
+        boundary("Exercise1022 Start");
+
+        Exercise1022 exercise1022 = new Exercise1022();
+        for (int i = 0;i < 5; i++) {
+            exercise1022.push(new ListNode(i));
+        }
+        for (int i = 0;i < 5; i++) {
+            System.out.println(exercise1022.pop().key);
+        }
+
+        boundary("Exercise1023 Start");
+
+        Exercise1023 exercise1023 = new Exercise1023();
+        for (int i = 0;i < 4; i++) {
+            exercise1023.enqueue(new ListNode(i));
+        }
+        System.out.println(exercise1023.dequeue().key);
+        System.out.println(exercise1023.dequeue().key);
+
+        boundary("Exercise1024 Start");
+
+        Exercise1024 exercise1024 = new Exercise1024();
+        for (int i = 0;i < 5; i++) {
+            exercise1024.insert(new ListNode(i));
+        }
+        System.out.println(exercise1024.delete(exercise1024.search(4)).key);
+
+        boundary("Exercise1025 Start");
+       // exercise1024.reverse();
+        ListNode node = exercise1024.nil.next;
+        while (node != exercise1024.nil) {
+            System.out.println(node.key);
+            node = node.next;
+        }
+
+
     }
 }
