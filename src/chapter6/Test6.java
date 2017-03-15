@@ -13,6 +13,7 @@ public class Test6 {
         System.out.println(Arrays.toString(a));
         LoopMaxHeapify.maxHeapfiy(b, 1);
         System.out.println(Arrays.toString(b));
+        System.out.println(Math.pow(2,3));
 
     }
 }
