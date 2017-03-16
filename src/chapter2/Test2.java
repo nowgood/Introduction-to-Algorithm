@@ -19,6 +19,7 @@ public class Test2 {
         System.out.println("Exercise214测试：  " + Arrays.toString(Exercise214.ex214(b, c)));
 
         System.out.println(Arrays.toString(Exercise234.recursionInsertSort(a, a.length - 1)));
+        System.out.println("test");
     }
 }
 
