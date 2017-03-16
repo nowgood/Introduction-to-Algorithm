@@ -1,5 +1,6 @@
 package chapter6;
 
+import javax.management.MXBean;
 import java.util.Arrays;
 
 /**
@@ -13,7 +14,14 @@ public class Test6 {
         System.out.println(Arrays.toString(a));
         LoopMaxHeapify.maxHeapfiy(b, 1);
         System.out.println(Arrays.toString(b));
-        System.out.println(Math.pow(2,3));
+
+        // test MaxHeap class
+        int[] c = {10, 5, 9, 8, 7, 7, 6, 6, 6};
+        MaxHeap maxHeap = new MaxHeap();
+        int[] heapArr = maxHeap.buildMaxHeap(c);
+        System.out.println(maxHeap.getHeapSize());
+        System.out.println(Arrays.toString(heapArr));
+
 
     }
 }

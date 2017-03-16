@@ -3,27 +3,6 @@ package chapter10;
 import java.util.Arrays;
 
 /**
-<<<<<<< HEAD
- * Created by wangbin on 2017/3/7.
- *
- * 未完成，各种错误
- */
-public class Test10 {
-    public static void main(String[] args) {
-        Exercise1012 exercise1012 = new Exercise1012(20);
-       Exercise1012.Stack1 stack1 = exercise1012.new Stack1();
-       Exercise1012.Stack2 stack2 = exercise1012.new Stack2();
-
-       for (int i = 0; i < 10; i++) {
-           stack1.push(10 + i);
-       }
-
-        for (int i = 0; i < 10; i++) {
-            stack2.push(20);
-        }
-
-        System.out.println(Arrays.toString(exercise1012.array));
-=======
  *
  * Created by NowGood on 2017/3/7.
  */
@@ -60,12 +39,12 @@ public class Test10 {
         boundary("Exercise1014 Start");
         Exercise1014 exercise1014 = new Exercise1014(5);
         for (int i = 0; i < 5 - 1; i++) {
-          exercise1014.enqueue(i);
+            exercise1014.enqueue(i);
         }
         for (int i = 0; i < 5 - 1; i++) {
             exercise1014.dequeue();
         }
-       // exercise1014.dequeue();
+        // exercise1014.dequeue();
         System.out.println(Arrays.toString(exercise1014.array));
 
         boundary("Exercise1014 End");
@@ -82,11 +61,11 @@ public class Test10 {
         boundary("Exercise1016 Start");
 
         Exercise1016 exercise1016 = new Exercise1016();
-       for (int i = 0;i < 4; i++) {
-           exercise1016.enqueue(i);
-       }
-       for (int i = 0;i < 4; i++) {
-           System.out.println(exercise1016.dequeue());
+        for (int i = 0;i < 4; i++) {
+            exercise1016.enqueue(i);
+        }
+        for (int i = 0;i < 4; i++) {
+            System.out.println(exercise1016.dequeue());
         }
         exercise1016.enqueue(3);
         System.out.println(exercise1016.dequeue());
@@ -144,13 +123,12 @@ public class Test10 {
         System.out.println(exercise1024.delete(exercise1024.search(4)).key);
 
         boundary("Exercise1025 Start");
-       // exercise1024.reverse();
+        // exercise1024.reverse();
         ListNode node = exercise1024.nil.next;
         while (node != exercise1024.nil) {
             System.out.println(node.key);
             node = node.next;
         }
->>>>>>> origin/master
 
 
     }

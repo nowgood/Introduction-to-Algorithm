@@ -27,7 +27,7 @@
 举例：LeftChild = （（i + 1） x 2） -1 = 2i + 1
 
 Parent（i）
-return floor((i-1)/2)
+return floor(i/2) - 1  // 之前搞错了，牢记 ：不是 floor((i-1)/2)
 
 LeftChild(i)
 return 2i + 1
