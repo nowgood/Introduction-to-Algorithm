@@ -90,7 +90,8 @@ class SearchTree(object):
         else:
             return node.val
 
-    def _find_iter(self, x, node):
+    @staticmethod
+    def _find_iter(x, node):
 
         while True:
             if x < node.val:
@@ -108,7 +109,8 @@ class SearchTree(object):
             else:
                 return node.val
 
-    def _find_parent(self, x, node):
+    @staticmethod
+    def _find_parent(x, node):
         parent = None
         while True:
             if x < node.val:
@@ -134,7 +136,8 @@ class SearchTree(object):
             self._traverse(node.left)
             self._traverse(node.right)
 
-    def _traverse_iter_preorder(self, node):
+    @staticmethod
+    def _traverse_iter_preorder(node):
         s = []
         while s or node:
             if node:
@@ -144,7 +147,8 @@ class SearchTree(object):
             else:
                 node = s.pop().right
 
-    def _traverse_iter_inorder(self, node):
+    @staticmethod
+    def _traverse_iter_inorder(node):
         s = []
         while s or node:
             if node:
@@ -162,7 +166,8 @@ class SearchTree(object):
        / \
       o   o
     '''
-    def _traverse_iter_postorder(self, node):
+    @staticmethod
+    def _traverse_iter_postorder(node):
 
         s = []
         while s or node:
@@ -171,40 +176,46 @@ class SearchTree(object):
                 node = node.left
             else:
                 node = s[-1].right
-
                 if node is None:
                     node = s.pop()
                     print(node.val, end=" ")
                     while s and node is s[-1].right:
                         node = s.pop()
                         print(node.val, end=" ")
-
-                if s:
+                if s is not None:
+                    '''
+                    s = []
+                    s is not None: True
+                    if s: s 虽然不是None, 但是 if 语句在判断是, 如果是空列表则判断为假
+                    '''
                     node = s[-1].right
                 else:
-                    node = None  # or break; very important!
+                    # 后序遍历, 如果栈为空表明所有节点都已经处理了
+                    break  # or node = None, very important!
 
     def delete(self, x):
 
-        if x == self.root.val:  # 删除节点为根节点, 特殊点就是没有父节点, 不用更新父节点
+        if x == self.root.val:  # 1. 删除节点为根节点, 特殊点就是没有父节点, 所以不用更新父节点
             node = self.root
-            if node.right and node.left:
+            if node.right and node.left:  # 2. 删除节点有左右孩子
                 self._transpose(node)
-            elif node.right:
+            elif node.right:  # 3.1 删除节点有右孩子
                 self.root.right = node.right
-            elif node.left:
+            elif node.left:  # 3.2 删除节点有左孩子
                 self.root.left = node.left
             else:
-                self.root = None
+                self.root = None  # 4. 删除节点为叶节点
         else:
             parent, node = self._find_parent(x, self.root)
             print("parent: ", parent.val, "node: ", node.val)
+
             if node is None:
                 print("%d not exists" % x)
+                return
 
             if node.right and node.left:
                 self._transpose(node)
-                return
+                return  # solely
             elif node.right:
                 update = node.right
             elif node.left:
@@ -212,15 +223,17 @@ class SearchTree(object):
             else:
                 update = None
 
+            # 判断当前节点是父节点的左孩子还是右孩子
             if parent.left is node:
                 parent.left = update
             else:
                 parent.right = update
 
     """
-    处理删除节点有两个儿子节点的情况, 传入 node 为删除节点
+    处理删除节点有两个儿子节点的情况, node 为删除节点
     """
-    def _transpose(self, node):
+    @staticmethod
+    def _transpose(node):
         parent = node
         node = node.right
         if node.left is None:  # 后继为删除节点的右孩子
