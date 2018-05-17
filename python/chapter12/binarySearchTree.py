@@ -182,7 +182,7 @@ class SearchTree(object):
                 if s:
                     node = s[-1].right
                 else:
-                    node = None  # very important!
+                    node = None  # or break; very important!
 
     def delete(self, x):
 
