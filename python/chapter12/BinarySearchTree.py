@@ -1,3 +1,4 @@
+# coding=utf-8
 import random
 
 
@@ -13,7 +14,10 @@ class SearchTree(object):
         self.root = TreeNode(x)
 
     def insert(self, x):
-        self._insert(x, self.root)
+        if self.root is None:
+            self.root = TreeNode(x)
+        else:
+            self._insert1(x, self.root)
 
     def insert_iter(self, x):
         self._insert_iter(x, self.root)
@@ -60,21 +64,36 @@ class SearchTree(object):
             else:
                 node.right = TreeNode(x)
 
-    def _insert_iter(self, x, node):
-        flag = True
-        while flag:
+    '''
+    该方法和上面方法的不同之处在于方法具有返回值, 
+    方法传入值root表示在该子树插入 x
+    返回值表示返回插入值 x 之后的子树
+    '''
+    def _insert1(self, x, root):
+        node = root
+        if root is None:
+            node = TreeNode(x)
+        elif x < node.val:
+            node.left = self._insert1(x, node.left)
+        else:
+            node.right = self._insert1(x, node.right)
+        return node
+
+    @staticmethod
+    def _insert_iter(x, root):
+        node = root
+        parent = node
+        while node:
+            parent = node
             if x < node.val:
-                if node.left:
-                    node = node.left
-                else:
-                    node.left = TreeNode(x)
-                    flag = False
+                node = node.left
             else:
-                if node.right:
-                    node = node.right
-                else:
-                    node.right = TreeNode(x)
-                    flag = False
+                node = node.right
+        node = TreeNode(x)
+        if x < parent.val:
+            parent.left = node
+        else:
+            parent.right = node
 
     def _find(self, x, node):
         if x < node.val:
@@ -182,7 +201,7 @@ class SearchTree(object):
                     while s and node is s[-1].right:
                         node = s.pop()
                         print(node.val, end=" ")
-                if s is not None:
+                if s:
                     '''
                     s = []
                     s is not None: True
@@ -207,7 +226,7 @@ class SearchTree(object):
                 self.root = None  # 4. 删除节点为叶节点
         else:
             parent, node = self._find_parent(x, self.root)
-            print("parent: ", parent.val, "node: ", node.val)
+            print("parent:", parent.val, " node:", node.val)
 
             if node is None:
                 print("%d not exists" % x)
@@ -269,7 +288,7 @@ if __name__ == "__main__":
     print(tree.find_min())
     print(tree.find_max())
     # tree.delete(10)
-    # tree.delete(19)
+    tree.delete(19)
     # tree.delete(14)
     # tree.delete(15)
     tree.traverse_preorder()
